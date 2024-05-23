@@ -23,12 +23,25 @@
             </el-icon>
             <template #title> <span>项目总览</span></template>
           </el-menu-item>
+          <el-menu-item index="/articleLimit">
+            <el-icon>
+              <Tickets />
+            </el-icon>
+            <template #title> <span>文章上限</span></template>
+          </el-menu-item>
+          <el-menu-item index="/infoPush">
+            <el-icon>
+              <Tickets />
+            </el-icon>
+            <template #title> <span>通知推送</span></template>
+          </el-menu-item>
           <el-menu-item index="/basicSetting">
             <el-icon>
               <Tickets />
             </el-icon>
             <template #title> <span>基础信息配置</span></template>
           </el-menu-item>
+
           <el-menu-item index="/selectUser">
             <el-icon>
               <Tickets />

@@ -195,3 +195,68 @@ export function getAllUser() {
 export function saveSignCodeByPush(data) {
   return axios({ url: "/api/api/article/update", method: "post", data });
 }
+//获取广告和非广告的上限
+export function getArticleLimit() {
+  return axios({
+    url: "/api/api/userarticle/GetReadLimitOfRedis",
+  });
+}
+
+//修改上限
+export function saveArticleLimit(data, _this) {
+  return axios({
+    url: "/api/api/userarticle/ModifyReadLimitOfRedis",
+    method: "post",
+    data,
+  }).then((res) => {
+    if (res.data.code == 200) {
+      _this.getArticleLimit();
+      ElMessage.success("保存成功");
+    }
+  });
+}
+
+//新增通知
+export function pushInfo(data, _this) {
+  return axios({
+    url: "/api/api/notice/add",
+    method: "post",
+    data,
+  }).then((res) => {
+    if (res.data.code == 200) {
+      ElMessage.success("发布成功");
+      _this.selectInfoList();
+    }
+  });
+}
+//删除通知
+export function deleteInfo(data, _this) {
+  return axios({
+    url: "/api/api/notice/delete?id=" + data,
+    method: "post",
+  }).then((res) => {
+    if (res.data.code == 200) {
+      ElMessage.success("删除成功");
+      _this.selectInfoList();
+    }
+  });
+}
+//修改通知
+export function editInfo(data, _this) {
+  return axios({
+    url: "/api/api/notice/update",
+    method: "post",
+    data,
+  }).then((res) => {
+    if (res.data.code == 200) {
+      ElMessage.success("修改成功");
+      _this.selectInfoList();
+    }
+  });
+}
+//获取通知
+export function selectInfo() {
+  return axios({
+    url: "/api/api/notice/get",
+  });
+}

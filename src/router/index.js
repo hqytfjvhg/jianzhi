@@ -104,7 +104,18 @@ const routes = [
         component: () => import("@/views/root/OverView.vue"),
         meta: { info: "项目总览" },
       },
-
+      {
+        path: "/articleLimit",
+        name: "articleLimit",
+        component: () => import("@/views/root/articleLimit.vue"),
+        meta: { info: "文章上限" },
+      },
+      {
+        path: "/infoPush",
+        name: "infoPush",
+        component: () => import("@/views/root/infoPush.vue"),
+        meta: { info: "通知推送" },
+      },
     ],
   },
 ];
@@ -119,7 +130,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-
   // 准备跳到登录页放行
   if (to.path === "/login") return next();
   if (to.path === "/register") return next();

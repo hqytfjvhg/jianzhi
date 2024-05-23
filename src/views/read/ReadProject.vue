@@ -21,7 +21,9 @@
             </el-table-column>
             <el-table-column label="操作">
               <template #default="scope">
-                <el-button size="small" type="primary" @click="signInDialog(scope.row)">学习</el-button></template
+                <el-button size="small" type="primary" @click="signInDialog(scope.row)" v-if="scope.row.readStatusFlag"
+                  >学习</el-button
+                ></template
               ></el-table-column
             >
           </el-table>
@@ -77,13 +79,14 @@
         <span style="font-size: 17px; font-weight: 700">【通知一】</span> <br />
         <span>
           知识点方案更新<br />00:00-00:18学习7知识点 <br />
-          00:18-09:20学习5知识点<br />
-          09:20-23:59学习3知识点<br />
+          00:18-09:20学习6知识点<br />
+          09:20-23:59学习5知识点<br />
           会员在此基础上多3知识点
         </span>
       </div>
       <div><el-button @click="isShowInfo = false" type="primary">确定</el-button></div>
     </el-dialog>
+    <!-- <globalInfo></globalInfo> -->
   </div>
 </template>
 
@@ -91,8 +94,9 @@
 import { ElMessageBox, ElMessage } from "element-plus";
 import store from "@/store";
 import { selectArticle, getSignInfo, signInArticle, userClock, checkReadings, passReadings } from "@/api/read/index";
-
+// import globalInfo from "@/components/info/globalInfo.vue";
 export default {
+  // components: { globalInfo },
   data() {
     return {
       activeName: "first",
@@ -145,7 +149,8 @@ export default {
     },
     async signInDialog(row) {
       this.articleRowData = row;
-      console.log(row);
+      // console.log(row);
+      this.selectArticle();
       // console.log(JSON.parse(store.state.userInfo));
       if (JSON.parse(store.state.userInfo).phoneNum == "" || JSON.parse(store.state.userInfo).phoneNum == "123") {
         ElMessage.error("请先在【个人中心】填写微信昵称");

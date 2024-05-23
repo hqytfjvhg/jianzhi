@@ -27,7 +27,7 @@
       </el-icon>
       <div class="redPoint" v-if="$store.state.role != 'ROOT'">{{ $store.state.number2 }}</div> -->
 
-      <el-dropdown>
+      <el-dropdown trigger="click">
         <!-- <a class="el-dropdown-link" @click.prevent>
           <el-avatar style="font-size: 0.5rem">zzzz</el-avatar>
         </a> -->
@@ -68,7 +68,7 @@ import { ElMessageBox, ElMessage } from "element-plus";
 // import { useRouter } from "vue-router";
 // import axios from "axios";
 // import store from "@/store";
-// import { logout } from "@/api/logout/index";
+import { logout } from "@/api/logout/index";
 // import emitter from "@/utils/eventbus.js";
 
 export default {
@@ -135,8 +135,8 @@ export default {
           // localStorage.removeItem("username");
           // localStorage.clear();
           // window.location.reload();
-          // logout();
-          this.$router.replace({ name: "login" });
+          logout();
+          // this.$router.replace({ name: "login" });
         })
         .catch(() => {
           ElMessage({

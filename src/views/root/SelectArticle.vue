@@ -171,7 +171,7 @@ export default {
   created() {
     //动态计算表格高度
     let windowHeight = document.documentElement.clientHeight || document.bodyclientHeight;
-    this.TableHeight = windowHeight - 250; //数值"140"根据需要调整
+    this.TableHeight = windowHeight - 350; //数值"140"根据需要调整
   },
   methods: {
     getArticleList() {

@@ -29,8 +29,8 @@ module.exports = defineConfig({
         "/api": {
           // http://120.78.238.125:8888/
           // 192.168.1.148:8989
-          // target: "http://175.178.131.223:7529",
-          target: "http://127.0.0.1:7529",
+          target: "http://175.178.131.223:7529",
+          // target: "http://127.0.0.1:7529",
           // target: "http://120.78.140.246:7529",
           changeOrigin: true,
           // secure: false, // 当代理某些https服务报错时用
